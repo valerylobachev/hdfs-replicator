@@ -36,6 +36,23 @@ in next runs.
 
 `-s <source-url>` - source HDFS URL, for example `-s "hdfs://namenode:9000/user/data/parquet/passport"`
 
+## Example
+
+If file `dst/files.txt` contains `part-00001-90fa676f-4d1b-4ad8-9afd-781f2a39339d-c000.snappy.parquet` and 
+you run command `./replicator -s "hdfs://namenode:9000/user/data/parquet/passport" -d dst -c dst/files.txt`
+you could get the following result:
+ 
+```
+~/hdfs-replicator > ./replicator -s "hdfs://namenode:9000/user/data/parquet/passport" -d dst -c dst/files.txt        
+copying file part-00000-90fa676f-4d1b-4ad8-9afd-781f2a39339d-c000.snappy.parquet
+skipping file part-00001-90fa676f-4d1b-4ad8-9afd-781f2a39339d-c000.snappy.parquet
+```
+
+After program execution file `dst/files.txt` contains both files:
+```
+part-00001-90fa676f-4d1b-4ad8-9afd-781f2a39339d-c000.snappy.parquet
+part-00000-90fa676f-4d1b-4ad8-9afd-781f2a39339d-c000.snappy.parquet
+```
 
 ## Contributing
 
